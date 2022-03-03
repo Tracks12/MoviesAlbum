@@ -29,13 +29,13 @@ export class ApiService {
 			.toPromise();
 	}
 
-	public async getMovieById(id: number): Promise<Movie | undefined> {
+	public async getMovieById(id: string): Promise<Movie | undefined> {
 		return this.http
 			.get<Movie>(`${this.API_URL}/${this.API_ROUTES.movies}/${id}`, { headers: this.headers })
 			.toPromise();
 	}
 
-	public async postCommentOnMovieById(id: number, comment: string): Promise<any> {
+	public async postCommentOnMovieById(id: string, comment: string): Promise<any> {
 		return this.http
 			.post<any>(`${this.API_URL}/${this.API_ROUTES.movies}/${id}`, comment, { headers: this.headers })
 			.toPromise();

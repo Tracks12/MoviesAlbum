@@ -1,1 +1,8 @@
-<p>details works!</p>
+<div *ngIf="movie">
+	<p>{{ movie.title }}</p>
+	<p>{{ movie.tagline }}</p>
+	<p>{{ movie.vote_average }}</p>
+	<p>{{ movie.runtime }}</p>
+	<p>{{ movie.release_date }}</p>
+	<p *ngFor="let genre of movie.genres">{{ genre.name }}</p>
+</div>

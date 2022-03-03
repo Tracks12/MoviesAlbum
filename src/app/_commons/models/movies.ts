@@ -1,16 +1,34 @@
+import { BelongsToCollection } from './belongs-to-collection';
+import { Comment } from './comments';
+import { Genre } from './genres';
+import { ProductionCompanie, ProductionCountrie } from './productions';
+import { SpokenLanguage } from './spoken-language';
+
 export interface Movie {
 	adult: boolean;
-	genre_ids: number[];
+	backdrop_path: string;
+	belongs_to_collection: BelongsToCollection;
+	budget: number;
+	comments: Comment[];
+	genres: Genre[];
+	homepage: string;
 	id: number;
+	imdb_id: string;
 	original_language: string;
 	original_title: string;
 	overview: string;
 	popularity: number;
+	poster_path: string;
+	production_companies: ProductionCompanie[];
+	production_countries: ProductionCountrie[];
 	release_date: string;
+	revenue: number;
+	runtime: number;
+	spoken_languages: SpokenLanguage[];
+	status: string;
+	tagline: string;
 	title: string;
 	video: boolean;
 	vote_average: number;
 	vote_count: number;
-	poster_path: string;
-	backdrop_path: string;
 };
