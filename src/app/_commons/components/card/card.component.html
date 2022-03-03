@@ -1,0 +1,6 @@
+<mat-card>
+	<a routerLink="/detail/{{ movie.id }}">
+		<img mat-card-image [src]="movie.poster_path" />
+		<mat-card-title>{{ movie.title }}</mat-card-title>
+	</a>
+</mat-card>
