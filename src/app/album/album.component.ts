@@ -10,11 +10,12 @@ import { map, shareReplay } from 'rxjs/operators';
 })
 
 export class AlbumComponent {
-	public isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-		.pipe(
-			map(result => result.matches),
-			shareReplay()
-		);
+	public isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
+		map(result => result.matches),
+		shareReplay()
+	);
+
+	public assetsPath: string = '/assets';
 
 	public genres: string[] = [
 		'Action',
