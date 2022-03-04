@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class ErrorComponent implements OnInit {
+	public assetsPath: string = "/assets/404";
+	public indexPath: string = "/";
+
 	constructor() {}
 
-	ngOnInit(): void {
+	public ngOnInit(): void {
 
 	}
 }

@@ -1,1 +1,15 @@
-<p>error works!</p>
+<div class="body">
+	<section class="notFound">
+		<div class="img">
+			<img src="{{ this.assetsPath }}/backToTheHomepage.webp" alt="Back to the Homepage"/>
+			<img src="{{ this.assetsPath }}/Delorean.webp" alt="Delorean"/>
+		</div>
+		<div class="text">
+			<h1>404</h1>
+			<h2>page not found</h2>
+			<h3>back to home ?</h3>
+			<a [routerLink]="this.indexPath" class="yes">yes</a>
+			<a href="https://www.youtube.com/watch?v=G3AfIvJBcGo">no</a>
+		</div>
+	</section>
+</div>
