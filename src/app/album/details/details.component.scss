@@ -1,0 +1,13 @@
+.content {
+	padding: 16px;
+
+	.col {
+		&:last-of-type {
+			padding: 4px 16px;
+		}
+
+		img {
+			max-width: 100%;
+		}
+	}
+}

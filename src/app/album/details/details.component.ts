@@ -11,7 +11,6 @@ import { ApiService } from '../../_commons/services/api.service';
 })
 
 export class DetailsComponent implements OnInit {
-	private id!: string | null;
 	public movie: Movie | undefined;
 
 	constructor(
@@ -20,9 +19,9 @@ export class DetailsComponent implements OnInit {
 	) {}
 
 	public async ngOnInit(): Promise<void> {
-		this.id = this.route.snapshot.paramMap.get('id');
+		let id: string | null = this.route.snapshot.paramMap.get('id');
 
-		if(this.id)
-			this.movie = await this.api.getMovieById(this.id);
+		if(id)
+			this.movie = await this.api.getMovieById(id);
 	}
 }

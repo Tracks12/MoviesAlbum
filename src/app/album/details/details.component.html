@@ -1,8 +1,17 @@
-<div *ngIf="movie">
-	<p>{{ movie.title }}</p>
-	<p>{{ movie.tagline }}</p>
-	<p>{{ movie.vote_average }}</p>
-	<p>{{ movie.runtime }}</p>
-	<p>{{ movie.release_date }}</p>
-	<p *ngFor="let genre of movie.genres">{{ genre.name }}</p>
+<div *ngIf="movie" class="content">
+	<div fxLayout="row wrap">
+		<div class="col" fxFlex="300px" fxFlex.xs="100%">
+			<img [src]="movie.poster_path" [alt]="movie.title">
+		</div>
+		<div class="col" fxFlex="auto" fxFlex.xs="100%">
+			<h1>{{ movie.title }}</h1>
+			<h2>{{ movie.tagline }}</h2>
+			<p>{{ movie.vote_average }}</p>
+			<p>{{ movie.runtime }}</p>
+			<p>{{ movie.release_date }}</p>
+			<ul>
+				<li *ngFor="let genre of movie.genres">{{ genre.name }}</li>
+			</ul>
+		</div>
+	</div>
 </div>
