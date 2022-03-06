@@ -24,4 +24,12 @@ export class DetailsComponent implements OnInit {
 		if(id)
 			this.movie = await this.api.getMovieById(id);
 	}
+
+	public open(lnk: string): void {
+		window.open(lnk);
+	}
+
+	public openIMDBPage(id: string): void {
+		window.open(`https://www.imdb.com/title/${id}`);
+	}
 }

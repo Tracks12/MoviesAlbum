@@ -4,14 +4,54 @@
 			<img [src]="movie.poster_path" [alt]="movie.title">
 		</div>
 		<div class="col" fxFlex="auto" fxFlex.xs="100%">
-			<h1>{{ movie.title }}</h1>
-			<h2>{{ movie.tagline }}</h2>
-			<p>{{ movie.vote_average }}</p>
-			<p>{{ movie.runtime }}</p>
-			<p>{{ movie.release_date }}</p>
-			<ul>
-				<li *ngFor="let genre of movie.genres">{{ genre.name }}</li>
+			<h1>{{ movie.title }} ({{ movie.release_date.split('-')[0] }})</h1>
+			<h2 *ngIf="movie.tagline">{{ movie.tagline }}</h2>
+			<ul class="inline-list" *ngIf="movie.spoken_languages">
+				<li *ngFor="let spoken_language of movie.spoken_languages">
+					<button mat-button>{{ spoken_language.english_name }}</button>
+				</li>
 			</ul>
+			<p><mat-icon>star</mat-icon>{{ movie.vote_average }} / 10</p>
+			<p><mat-icon>alarm</mat-icon>{{ movie.runtime }} min</p>
+			<ul class="inline-list" *ngIf="movie.genres">
+				<li *ngFor="let genre of movie.genres">
+					<button mat-button color="primary">{{ genre.name }}</button>
+				</li>
+			</ul>
+			<ul class="inline-list" *ngIf="movie.homepage || movie.imdb_id">
+				<li *ngIf="movie.homepage">
+					<button
+						mat-raised-button
+						color="primary"
+						(click)="open(movie.homepage)">Homepage</button>
+				</li>
+				<li *ngIf="movie.imdb_id">
+					<button
+						mat-raised-button
+						color="primary"
+						(click)="openIMDBPage(movie.imdb_id)">IMDb</button>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="row wrap">
+		<div class="col overview">
+			<h2>Overview</h2>
+			<p>{{ movie.overview }}</p>
+		</div>
+	</div>
+	<div class="row wrap">
+		<div class="col comments" fxFlex="100%">
+			<h1>Comments</h1>
+			<mat-card *ngFor="let comment of movie.comments">
+				<mat-card-content>
+					<p class="rate">{{ comment.rating }}</p>
+					<p class="text">{{ comment.text }}</p>
+				</mat-card-content>
+				<mat-card-footer>
+					<p class="date">{{ comment.date }}</p>
+				</mat-card-footer>
+			</mat-card>
 		</div>
 	</div>
 </div>

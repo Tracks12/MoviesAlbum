@@ -1,6 +1,27 @@
 .content {
 	padding: 16px;
 
+	.comments {
+		.mat-card {
+			margin: 20px 0;
+			overflow: auto;
+
+			.mat-card-footer {
+				opacity: .5;
+				padding: 0 10px;
+			}
+		}
+	}
+
+	.inline-list {
+		padding: 0;
+
+		li {
+			display: inline-block;
+			margin: 0 5px;
+		}
+	}
+
 	.col {
 		&:last-of-type {
 			padding: 4px 16px;
