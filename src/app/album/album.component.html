@@ -5,7 +5,7 @@
 			[opened]="(isHandset$ | async) === false">
 		<mat-toolbar>Genres</mat-toolbar>
 		<mat-nav-list>
-			<a mat-list-item *ngFor="let genre of genres" href="#genre/{{ genre }}">{{ genre }}</a>
+			<a mat-list-item *ngFor="let genre of genres" routerLink="/{{ genre.id }}">{{ genre.name }}</a>
 		</mat-nav-list>
 	</mat-sidenav>
 	<mat-sidenav-content>

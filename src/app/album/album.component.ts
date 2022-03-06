@@ -3,6 +3,8 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
+import { Genres, Genre } from '../_commons/models/genres';
+
 @Component({
 	selector: 'app-album',
 	templateUrl: './album.component.html',
@@ -16,22 +18,11 @@ export class AlbumComponent {
 	);
 
 	public assetsPath: string = '/assets';
-
-	public genres: string[] = [
-		'Action',
-		'Adventure',
-		'Animation',
-		'Comedy',
-		'Crime',
-		'Documentary',
-		'Drama'
-	];
+	public genres: Genre[] = Genres;
 
 	constructor(
 		private breakpointObserver: BreakpointObserver
 	) {}
 
-	public ngOnInit(): void {
-
-	}
+	public ngOnInit(): void {}
 }

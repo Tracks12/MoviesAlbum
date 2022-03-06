@@ -13,7 +13,5 @@ export class CardComponent implements OnInit {
 
 	constructor() {}
 
-	public ngOnInit(): void {
-
-	}
+	public ngOnInit(): void {}
 }

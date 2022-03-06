@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
+import { Genre } from '../../_commons/models/genres';
 import { Movie } from '../../_commons/models/movies';
 import { ApiService } from '../../_commons/services/api.service';
 
@@ -10,13 +12,24 @@ import { ApiService } from '../../_commons/services/api.service';
 })
 
 export class AlbumListComponent implements OnInit {
+	public allMovies: Movie[] | undefined;
 	public movies: Movie[] | undefined;
 
 	constructor(
+		private readonly route: ActivatedRoute,
 		private readonly api: ApiService
 	) {}
 
+	public updateList(): void {
+		let id: string | null = this.route.snapshot.paramMap.get('id');
+
+		if(id)
+			this.movies = this.allMovies?.filter((m: Movie) => m.genres.filter((g: Genre) => g.id === parseInt(id ? id : '0')).length);
+	}
+
 	public async ngOnInit(): Promise<void> {
-		this.movies = await this.api.getMovies();
+		this.allMovies = await this.api.getMovies();
+		this.movies = this.allMovies;
+		this.route.params.subscribe(() => this.updateList());
 	}
 }
