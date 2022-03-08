@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule } from '@angular/forms';
 
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatCardModule } from '@angular/material/card';
@@ -11,6 +12,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +22,7 @@ import { AlbumComponent } from './album/album.component';
 import { CardComponent } from './_commons/components/card/card.component';
 import { DetailsComponent } from './album/details/details.component';
 import { AlbumListComponent } from './album/album-list/album-list.component';
+import { SearchBarComponent } from './_commons/components/search-bar/search-bar.component';
 
 @NgModule({
 	declarations: [
@@ -27,7 +31,8 @@ import { AlbumListComponent } from './album/album-list/album-list.component';
 		AlbumComponent,
 		CardComponent,
 		DetailsComponent,
-		AlbumListComponent
+		AlbumListComponent,
+		SearchBarComponent
 	],
 	imports: [
 		BrowserModule,
@@ -35,13 +40,16 @@ import { AlbumListComponent } from './album/album-list/album-list.component';
 		BrowserAnimationsModule,
 		HttpClientModule,
 		FlexLayoutModule,
+		FormsModule,
 		LayoutModule,
 		MatCardModule,
 		MatToolbarModule,
 		MatButtonModule,
 		MatSidenavModule,
 		MatIconModule,
-		MatListModule
+		MatListModule,
+		MatInputModule,
+		MatFormFieldModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]

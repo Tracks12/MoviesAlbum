@@ -20,11 +20,16 @@ export class AlbumListComponent implements OnInit {
 		private readonly api: ApiService
 	) {}
 
-	public updateList(): void {
+	public updateList(name?: string): void {
 		let id: string | null = this.route.snapshot.paramMap.get('id');
 
+		this.movies = this.allMovies;
+
 		if(id)
-			this.movies = this.allMovies?.filter((m: Movie) => m.genres.filter((g: Genre) => g.id === parseInt(id ? id : '0')).length);
+			this.movies = this.movies?.filter((m: Movie) => m.genres.filter((g: Genre) => g.id === parseInt(id ? id : '0')).length);
+
+		if(name)
+			this.movies = this.movies?.filter((m: Movie) => m.title.toLowerCase().includes(name));
 	}
 
 	public async ngOnInit(): Promise<void> {

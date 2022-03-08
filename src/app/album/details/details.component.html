@@ -11,8 +11,16 @@
 					<button mat-button>{{ spoken_language.english_name }}</button>
 				</li>
 			</ul>
-			<p><mat-icon>star</mat-icon>{{ movie.vote_average }} / 10</p>
-			<p><mat-icon>alarm</mat-icon>{{ movie.runtime }} min</p>
+			<ul class="inline-list ipc-top">
+				<li class="ipc-cell">
+					<mat-icon>star</mat-icon>
+					<p>{{ movie.vote_average }} / 10</p>
+				</li>
+				<li class="ipc-cell">
+					<mat-icon>alarm</mat-icon>
+					<p>{{ movie.runtime }} min</p>
+				</li>
+			</ul>
 			<ul class="inline-list" *ngIf="movie.genres">
 				<li *ngFor="let genre of movie.genres">
 					<button mat-button color="primary" routerLink="/{{ genre.id }}">{{ genre.name }}</button>
@@ -45,7 +53,7 @@
 			<h1>Comments</h1>
 			<mat-card *ngFor="let comment of movie.comments">
 				<mat-card-content>
-					<p class="rate">{{ comment.rating }}</p>
+					<p class="rate"><mat-icon>star</mat-icon>{{ comment.rating }} / 10</p>
 					<p class="text">{{ comment.text }}</p>
 				</mat-card-content>
 				<mat-card-footer>

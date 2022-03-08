@@ -22,7 +22,20 @@
 		}
 	}
 
+	.ipc-top {
+		position: absolute;
+		right: 0;
+		top: 0;
+
+		.ipc-cell {
+			margin: 0 10px;
+			text-align: center;
+		}
+	}
+
 	.col {
+		position: relative;
+
 		&:last-of-type {
 			padding: 4px 16px;
 		}
@@ -30,5 +43,13 @@
 		img {
 			max-width: 100%;
 		}
+	}
+}
+
+@media screen and (min-width: 720px) {
+	.ipc-top {
+		position: relative;
+		right: auto;
+		top: auto;
 	}
 }

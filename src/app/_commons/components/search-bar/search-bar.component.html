@@ -1,0 +1,13 @@
+<div class="search-bar">
+	<mat-form-field fxFlex="auto">
+		<mat-label>Recherche</mat-label>
+		<input
+			matInput
+			type="text"
+			(change)="onSearchChange(search.value)"
+			#search />
+	</mat-form-field>
+	<button mat-icon-button>
+		<mat-icon>search</mat-icon>
+	</button>
+</div>
