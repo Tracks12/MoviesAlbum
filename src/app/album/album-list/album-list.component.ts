@@ -35,6 +35,7 @@ export class AlbumListComponent implements OnInit {
 	public async ngOnInit(): Promise<void> {
 		this.allMovies = await this.api.getMovies();
 		this.movies = this.allMovies;
+
 		this.route.params.subscribe(() => this.updateList());
 	}
 }

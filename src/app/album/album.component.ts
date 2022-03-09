@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 
 import { Genres, Genre } from '../_commons/models/genres';
 
@@ -19,10 +20,17 @@ export class AlbumComponent {
 
 	public assetsPath: string = '/assets';
 	public genres: Genre[] = Genres;
+	public selectedGenre!: string | null;
 
 	constructor(
-		private breakpointObserver: BreakpointObserver
+		private readonly breakpointObserver: BreakpointObserver,
+		private readonly route: ActivatedRoute,
 	) {}
 
-	public ngOnInit(): void {}
+	public ngOnInit(): void {
+		this.route.children[0].params.subscribe(() => {
+			let id: string | null = this.route.children[0].snapshot.paramMap.get('id');
+			this.selectedGenre = id ? id : 'all';
+		});
+	}
 }
