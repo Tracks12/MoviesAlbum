@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 import { Movie } from '../models/movies';
-import { PostComment, PostCommentResponse } from '../models/comments';
+import { Comment, PostComment } from '../models/comments';
 
 @Injectable({
 	providedIn: 'root'
@@ -37,9 +37,9 @@ export class ApiService {
 			.toPromise();
 	}
 
-	public async postCommentOnMovieById(id: string, comment: PostComment): Promise<PostCommentResponse | undefined> {
+	public async postCommentOnMovieById(id: string, comment: PostComment): Promise<Comment | undefined> {
 		return this.http
-			.post<PostCommentResponse>(`${this.API_URL}/${this.API_ROUTES.movies}/${id}/${this.API_ROUTES.comments}`, comment, { headers: this.headers })
+			.post<Comment>(`${this.API_URL}/${this.API_ROUTES.movies}/${id}/${this.API_ROUTES.comments}`, comment, { headers: this.headers })
 			.toPromise();
 	}
 }

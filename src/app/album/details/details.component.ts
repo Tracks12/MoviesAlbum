@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormControl, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Movie } from '../../_commons/models/movies';
-import { PostComment, PostCommentResponse } from '../../_commons/models/comments';
+import { Comment, PostComment } from '../../_commons/models/comments';
 import { ApiService } from '../../_commons/services/api.service';
 
 @Component({
@@ -13,6 +13,8 @@ import { ApiService } from '../../_commons/services/api.service';
 })
 
 export class DetailsComponent implements OnInit {
+	private SB_DURATION: number = 2000;
+
 	public id!: string;
 	public rate: number = 5;
 	public text: string = '';
@@ -20,6 +22,7 @@ export class DetailsComponent implements OnInit {
 	public showComment: boolean = false;
 
 	constructor(
+		private readonly _sb: MatSnackBar,
 		private readonly route: ActivatedRoute,
 		private readonly api: ApiService
 	) {}
@@ -45,13 +48,21 @@ export class DetailsComponent implements OnInit {
 		if(!comment.text)
 			return;
 
-		let res = await this.api.postCommentOnMovieById(this.id, comment);
+		try {
+			let res: Comment | undefined = await this.api.postCommentOnMovieById(this.id, comment);
 
-		if(res) {
-			this.rate = 5;
-			this.text = '';
-			this.showComment = false;
-			this.movie = await this.api.getMovieById(this.id);
+			if(res) {
+				this.rate = 5;
+				this.text = '';
+				this.showComment = false;
+				this.movie = await this.api.getMovieById(this.id);
+				this._sb.open('Comment successfully posted !', 'Ok', { duration: this.SB_DURATION });
+			}
+		}
+
+		catch (err) {
+			this._sb.open('Something went wrong', 'Ok', { duration: this.SB_DURATION });
+			console.error(err);
 		}
 	}
 }

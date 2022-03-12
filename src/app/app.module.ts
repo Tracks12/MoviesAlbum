@@ -15,6 +15,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -52,7 +53,8 @@ import { SearchBarComponent } from './_commons/components/search-bar/search-bar.
 		MatListModule,
 		MatInputModule,
 		MatFormFieldModule,
-		MatSliderModule
+		MatSliderModule,
+		MatSnackBarModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]
