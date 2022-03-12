@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatCardModule } from '@angular/material/card';
@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSliderModule } from '@angular/material/slider';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -41,6 +42,7 @@ import { SearchBarComponent } from './_commons/components/search-bar/search-bar.
 		HttpClientModule,
 		FlexLayoutModule,
 		FormsModule,
+		ReactiveFormsModule,
 		LayoutModule,
 		MatCardModule,
 		MatToolbarModule,
@@ -49,7 +51,8 @@ import { SearchBarComponent } from './_commons/components/search-bar/search-bar.
 		MatIconModule,
 		MatListModule,
 		MatInputModule,
-		MatFormFieldModule
+		MatFormFieldModule,
+		MatSliderModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]

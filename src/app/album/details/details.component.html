@@ -13,7 +13,7 @@
 			</ul>
 			<ul class="inline-list ipc-top">
 				<li class="ipc-cell">
-					<mat-icon>star</mat-icon>
+					<mat-icon class="ico-orange">star</mat-icon>
 					<p>{{ movie.vote_average }} / 10</p>
 				</li>
 				<li class="ipc-cell">
@@ -51,14 +51,52 @@
 	<div class="row wrap">
 		<div class="col comments" fxFlex="100%">
 			<h1>Comments</h1>
+			<mat-card>
+				<mat-card-header>
+					<div mat-card-avatar class="example-header-image"></div>
+					<mat-card-title></mat-card-title>
+					<mat-card-subtitle></mat-card-subtitle>
+					<mat-card-content fxFlex="auto">
+						<div class="row">
+							<div fxFlex="auto" style="display: {{ showComment ? 'block' : 'none' }}">
+								<mat-icon class="ico-orange">star</mat-icon>
+								<mat-slider
+									thumbLabel
+									aria-label="unit(s)"
+									min="0"
+									max="10"
+									step="0.1"
+									[(ngModel)]="rate"
+									(input)="rate = $event.value || 0"
+									ngDefaultControl></mat-slider>
+							</div>
+						</div>
+						<div class="row">
+							<mat-form-field fxFlex="auto" (click)="showComment = true">
+								<mat-label>Add a comment</mat-label>
+								<input matInput type="text" [(ngModel)]="text" ngDefaultControl>
+							</mat-form-field>
+						</div>
+					</mat-card-content>
+				</mat-card-header>
+				<mat-card-actions style="display: {{ showComment ? 'block' : 'none' }}">
+					<button mat-button (click)="showComment = false">Cancel</button>
+					<button mat-raised-button color="primary" (click)="postComment(rate, text)">Add a comment</button>
+				</mat-card-actions>
+			</mat-card>
 			<mat-card *ngFor="let comment of movie.comments">
+				<mat-card-header>
+					<div mat-card-avatar class="example-header-image"></div>
+					<mat-card-title>Unknown</mat-card-title>
+					<mat-card-subtitle>{{ comment.date }}</mat-card-subtitle>
+				</mat-card-header>
 				<mat-card-content>
-					<p class="rate"><mat-icon>star</mat-icon>{{ comment.rating }} / 10</p>
-					<p class="text">{{ comment.text }}</p>
+					<div class="rate">
+						<mat-icon class="ico-orange">star</mat-icon>
+						<p>{{ comment.rating }} / 10</p>
+					</div>
+					<div class="text">{{ comment.text }}</div>
 				</mat-card-content>
-				<mat-card-footer>
-					<p class="date">{{ comment.date }}</p>
-				</mat-card-footer>
 			</mat-card>
 		</div>
 	</div>

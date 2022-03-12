@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 import { Movie } from '../models/movies';
+import { PostComment, PostCommentResponse } from '../models/comments';
 
 @Injectable({
 	providedIn: 'root'
@@ -11,11 +12,12 @@ import { Movie } from '../models/movies';
 export class ApiService {
 	private API_URL: string = 'https://movie-api.benoithubert.me';
 
-	private API_ROUTES: any = {
-		movies: 'movies'
+	private API_ROUTES: { movies: string, comments: string } = {
+		movies: 'movies',
+		comments: 'comments'
 	}
 
-	public headers: any = {
+	public headers: { "Content-Type": string } = {
 		"Content-Type": "application/json; charset=utf-8",
 	}
 
@@ -35,9 +37,9 @@ export class ApiService {
 			.toPromise();
 	}
 
-	public async postCommentOnMovieById(id: string, comment: string): Promise<any> {
+	public async postCommentOnMovieById(id: string, comment: PostComment): Promise<PostCommentResponse | undefined> {
 		return this.http
-			.post<any>(`${this.API_URL}/${this.API_ROUTES.movies}/${id}`, comment, { headers: this.headers })
+			.post<PostCommentResponse>(`${this.API_URL}/${this.API_ROUTES.movies}/${id}/${this.API_ROUTES.comments}`, comment, { headers: this.headers })
 			.toPromise();
 	}
 }
