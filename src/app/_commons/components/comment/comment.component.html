@@ -1,0 +1,14 @@
+<mat-card>
+	<mat-card-header>
+		<div mat-card-avatar class="example-header-image"></div>
+		<mat-card-title>Unknown</mat-card-title>
+		<mat-card-subtitle>{{ comment.date }}</mat-card-subtitle>
+	</mat-card-header>
+	<mat-card-content>
+		<div class="rate">
+			<mat-icon class="ico-orange">star</mat-icon>
+			<p>{{ comment.rating }} / 10</p>
+		</div>
+		<div class="text">{{ comment.text }}</div>
+	</mat-card-content>
+</mat-card>

@@ -3,12 +3,12 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Movie } from '../../models/movies';
 
 @Component({
-	selector: 'app-card',
-	templateUrl: './card.component.html',
-	styleUrls: ['./card.component.scss']
+	selector: 'app-poster',
+	templateUrl: './poster.component.html',
+	styleUrls: ['./poster.component.scss']
 })
 
-export class CardComponent implements OnInit {
+export class PosterComponent implements OnInit {
 	@Input() public movie!: Movie;
 
 	constructor() {}

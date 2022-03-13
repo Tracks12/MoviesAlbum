@@ -2,7 +2,7 @@
 	<app-search-bar (search)="updateList($event)"></app-search-bar>
 	<div fxLayout="row wrap" fxLayoutGap="16px grid">
 		<div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let movie of movies">
-			<app-card [movie]="movie"></app-card>
+			<app-poster [movie]="movie"></app-poster>
 		</div>
 	</div>
 </div>

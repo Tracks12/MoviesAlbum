@@ -72,7 +72,7 @@
 							</div>
 						</div>
 						<div class="row">
-							<mat-form-field fxFlex="auto" (click)="showComment = true">
+							<mat-form-field fxFlex="100%" (click)="showComment = true">
 								<mat-label>Add a comment</mat-label>
 								<input matInput type="text" [(ngModel)]="text" ngDefaultControl>
 							</mat-form-field>
@@ -84,20 +84,7 @@
 					<button mat-raised-button color="primary" (click)="postComment(rate, text)">Add a comment</button>
 				</mat-card-actions>
 			</mat-card>
-			<mat-card *ngFor="let comment of movie.comments">
-				<mat-card-header>
-					<div mat-card-avatar class="example-header-image"></div>
-					<mat-card-title>Unknown</mat-card-title>
-					<mat-card-subtitle>{{ comment.date }}</mat-card-subtitle>
-				</mat-card-header>
-				<mat-card-content>
-					<div class="rate">
-						<mat-icon class="ico-orange">star</mat-icon>
-						<p>{{ comment.rating }} / 10</p>
-					</div>
-					<div class="text">{{ comment.text }}</div>
-				</mat-card-content>
-			</mat-card>
+			<app-comment *ngFor="let comment of movie.comments" [comment]="comment"></app-comment>
 		</div>
 	</div>
 </div>

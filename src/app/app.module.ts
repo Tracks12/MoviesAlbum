@@ -21,9 +21,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorComponent } from './error/error.component';
 import { AlbumComponent } from './album/album.component';
-import { CardComponent } from './_commons/components/card/card.component';
 import { DetailsComponent } from './album/details/details.component';
 import { AlbumListComponent } from './album/album-list/album-list.component';
+import { CommentComponent } from './_commons/components/comment/comment.component';
+import { PosterComponent } from './_commons/components/poster/poster.component';
 import { SearchBarComponent } from './_commons/components/search-bar/search-bar.component';
 
 @NgModule({
@@ -31,9 +32,10 @@ import { SearchBarComponent } from './_commons/components/search-bar/search-bar.
 		AppComponent,
 		ErrorComponent,
 		AlbumComponent,
-		CardComponent,
 		DetailsComponent,
 		AlbumListComponent,
+		CommentComponent,
+		PosterComponent,
 		SearchBarComponent
 	],
 	imports: [

@@ -2,26 +2,8 @@
 	padding: 16px;
 
 	.comments {
-		.mat-card {
-			margin: 20px 0;
-			overflow: auto;
-
-			.rate {
-				margin: 16px;
-				position: absolute;
-				right: 0;
-				text-align: center;
-				top: 0;
-			}
-
-			.mat-card-actions {
-				text-align: right;
-			}
-
-			.mat-card-footer {
-				opacity: .5;
-				padding: 0 10px;
-			}
+		.mat-card-actions {
+			text-align: right;
 		}
 	}
 
