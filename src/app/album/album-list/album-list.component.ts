@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Genre } from '../../_commons/models/genres';
 import { Movie } from '../../_commons/models/movies';
 import { ApiService } from '../../_commons/services/api.service';
+import { SB_DURATION } from '../../_commons/constants';
 
 @Component({
 	selector: 'app-album-list',
@@ -16,12 +18,13 @@ export class AlbumListComponent implements OnInit {
 	public movies: Movie[] | undefined;
 
 	constructor(
-		private readonly route: ActivatedRoute,
+		private readonly _sb: MatSnackBar,
+		private readonly _r: ActivatedRoute,
 		private readonly api: ApiService
 	) {}
 
 	public updateList(name?: string): void {
-		let id: string | null = this.route.snapshot.paramMap.get('id');
+		let id: string | null = this._r.snapshot.paramMap.get('id');
 
 		this.movies = this.allMovies;
 
@@ -33,9 +36,16 @@ export class AlbumListComponent implements OnInit {
 	}
 
 	public async ngOnInit(): Promise<void> {
-		this.allMovies = await this.api.getMovies();
-		this.movies = this.allMovies;
+		try {
+			this.allMovies = await this.api.getMovies();
+			this.movies = this.allMovies;
+		}
 
-		this.route.params.subscribe(() => this.updateList());
+		catch(err) {
+			this._sb.open('We can\'t retrieve the list of films', 'Ok', { duration: SB_DURATION });
+			console.error(err);
+		}
+
+		this._r.params.subscribe(() => this.updateList());
 	}
 }

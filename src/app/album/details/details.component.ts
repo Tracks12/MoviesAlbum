@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Movie } from '../../_commons/models/movies';
 import { Comment, PostComment } from '../../_commons/models/comments';
 import { ApiService } from '../../_commons/services/api.service';
+import { SB_DURATION } from '../../_commons/constants';
 
 @Component({
 	selector: 'app-details',
@@ -13,8 +14,6 @@ import { ApiService } from '../../_commons/services/api.service';
 })
 
 export class DetailsComponent implements OnInit {
-	private SB_DURATION: number = 2000;
-
 	public id!: string;
 	public rate: number = 5;
 	public text: string = '';
@@ -23,12 +22,12 @@ export class DetailsComponent implements OnInit {
 
 	constructor(
 		private readonly _sb: MatSnackBar,
-		private readonly route: ActivatedRoute,
+		private readonly _r: ActivatedRoute,
 		private readonly api: ApiService
 	) {}
 
 	public async ngOnInit(): Promise<void> {
-		this.id = this.route.snapshot.paramMap.get('id') || '';
+		this.id = this._r.snapshot.paramMap.get('id') || '';
 
 		if(this.id)
 			this.movie = await this.api.getMovieById(this.id);
@@ -56,12 +55,12 @@ export class DetailsComponent implements OnInit {
 				this.text = '';
 				this.showComment = false;
 				this.movie = await this.api.getMovieById(this.id);
-				this._sb.open('Comment successfully posted !', 'Ok', { duration: this.SB_DURATION });
+				this._sb.open('Comment successfully posted !', 'Ok', { duration: SB_DURATION });
 			}
 		}
 
-		catch (err) {
-			this._sb.open('Something went wrong', 'Ok', { duration: this.SB_DURATION });
+		catch(err) {
+			this._sb.open('Something went wrong', 'Ok', { duration: SB_DURATION });
 			console.error(err);
 		}
 	}
