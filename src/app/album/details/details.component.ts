@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Movie } from '../../_commons/models/movies';
 import { Comment, PostComment } from '../../_commons/models/comments';
 import { ApiService } from '../../_commons/services/api.service';
-import { SB_DURATION } from '../../_commons/constants';
+import { SB_DURATION, SB_OK } from '../../_commons/constants';
 
 @Component({
 	selector: 'app-details',
@@ -55,12 +55,12 @@ export class DetailsComponent implements OnInit {
 				this.text = '';
 				this.showComment = false;
 				this.movie = await this.api.getMovieById(this.id);
-				this._sb.open('Comment successfully posted !', 'Ok', { duration: SB_DURATION });
+				this._sb.open('Comment successfully posted !', SB_OK, { duration: SB_DURATION });
 			}
 		}
 
 		catch(err) {
-			this._sb.open('Something went wrong', 'Ok', { duration: SB_DURATION });
+			this._sb.open('Something went wrong', SB_OK, { duration: SB_DURATION });
 			console.error(err);
 		}
 	}

@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Genre } from '../../_commons/models/genres';
 import { Movie } from '../../_commons/models/movies';
 import { ApiService } from '../../_commons/services/api.service';
-import { SB_DURATION } from '../../_commons/constants';
+import { SB_DURATION, SB_OK } from '../../_commons/constants';
 
 @Component({
 	selector: 'app-album-list',
@@ -42,7 +42,7 @@ export class AlbumListComponent implements OnInit {
 		}
 
 		catch(err) {
-			this._sb.open('We can\'t retrieve the list of films', 'Ok', { duration: SB_DURATION });
+			this._sb.open('We can\'t retrieve the list of films', SB_OK, { duration: SB_DURATION });
 			console.error(err);
 		}
 
